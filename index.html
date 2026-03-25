@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dünya Haberleri</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin:0; padding:0; background-color:#f5f5f5; color:#333; }
+        header { background-color:#003366; color:white; padding:20px; text-align:center; }
+        nav { background-color:#0055a5; padding:10px; text-align:center; }
+        nav a { color:white; text-decoration:none; margin:0 15px; font-weight:bold; }
+        nav a:hover { text-decoration:underline; }
+        main { max-width:900px; margin:20px auto; padding:0 20px; }
+        .news-article { background:white; padding:15px; margin-bottom:20px; border-radius:5px; box-shadow:0 0 5px rgba(0,0,0,0.1); }
+        .news-article h2 { margin:0 0 10px 0; }
+        .news-article p { margin:0 0 10px 0; }
+        .news-article a { color:#0055a5; text-decoration:none; font-weight:bold; }
+        .news-article a:hover { text-decoration:underline; }
+        footer { text-align:center; padding:15px; background-color:#003366; color:white; margin-top:20px; }
+    </style>
+</head>
+<body>
+    <header><h1>Dünya Haberleri</h1></header>
+    <nav>
+        <a href="#">Ana Sayfa</a>
+        <a href="#">Dünya</a>
+        <a href="#">Teknoloji</a>
+        <a href="#">Spor</a>
+        <a href="#">Sağlık</a>
+    </nav>
+    <main id="news-container"></main>
+    <footer>&copy; 2026 Dünya Haberleri</footer>
+    <script>
+        const newsContainer = document.getElementById('news-container');
+        const newsData = [
+            { title:"Küresel İklim Zirvesi Başladı", summary:"Dünya liderleri, iklim değişikliğiyle mücadele için yeni hedefler belirlemek üzere toplandı.", url:"https://www.bbc.com/turkce" },
+            { title:"Uluslararası Ticaret Anlaşmaları Gündemde", summary:"Birçok ülke, serbest ticaret anlaşmalarını gözden geçirmek için toplantılar düzenliyor.", url:"https://www.cnn.com" },
+            { title:"COVID-19 Güncellemeleri", summary:"Dünya genelinde COVID-19 vakalarındaki son gelişmeler ve yeni önlemler açıklandı.", url:"https://www.who.int" }
+        ];
+        newsData.forEach(news => {
+            const article = document.createElement('div');
+            article.className = 'news-article';
+            article.innerHTML = `<h2>${news.title}</h2><p>${news.summary}</p><a href="${news.url}" target="_blank">Devamını oku</a>`;
+            newsContainer.appendChild(article);
+        });
+    </script>
+</body>
+</html>
