@@ -3,98 +3,137 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NB NEWS | XEYRİYYƏÇİ ARİF BAĞIROV</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <title>NB NEWS | DÜNYA MEDİA PORTALI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
-        :root { --red: #ff003c; --dark: #050505; --card: #111; --text: #e0e0e0; --gold: #ffbd39; }
-        body { background: var(--dark); color: var(--text); font-family: 'Montserrat', sans-serif; margin: 0; padding: 0; }
+        :root { --red: #ff003c; --dark: #000000; --card: #0a0a0a; --gold: #ffbd39; --gray: #888; }
+        
+        body { background: var(--dark); color: #fff; font-family: 'Montserrat', sans-serif; margin: 0; padding: 0; }
 
-        header { background: #000; padding: 25px; text-align: center; border-bottom: 3px solid var(--red); position: sticky; top: 0; z-index: 1000; }
-        .logo { font-family: 'Orbitron'; font-size: 28px; letter-spacing: 5px; color: white; margin: 0; }
+        /* ÜST NAVİQASİYA */
+        .top-bar { background: #111; padding: 10px 0; border-bottom: 1px solid #222; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; text-align: center; color: var(--gray); }
+        
+        header { 
+            background: rgba(0,0,0,0.98); padding: 30px 0; border-bottom: 4px solid var(--red); 
+            position: sticky; top: 0; z-index: 1000; text-align: center;
+        }
+        .logo { font-family: 'Orbitron'; font-size: 35px; letter-spacing: 8px; margin: 0; cursor: pointer; }
         .logo span { color: var(--red); }
 
-        .ticker { background: var(--red); color: white; padding: 12px 0; font-weight: bold; text-transform: uppercase; font-size: 11px; overflow: hidden; white-space: nowrap; }
-        .ticker-content { display: inline-block; animation: scroll 25s linear infinite; }
-        @keyframes scroll { from { transform: translateX(100%); } to { transform: translateX(-100%); } }
+        /* FLASH NEWS */
+        .breaking-news { background: var(--red); color: white; padding: 12px; font-weight: 800; text-transform: uppercase; font-size: 12px; overflow: hidden; }
+        .ticker { display: inline-block; white-space: nowrap; animation: move 30s linear infinite; }
+        @keyframes move { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
 
-        .container { max-width: 1300px; margin: 0 auto; padding: 40px 20px; display: grid; grid-template-columns: 3fr 1fr; gap: 30px; }
-
-        /* MANŞET: XEYRİYYƏÇİ ARİF BAĞIROV */
-        .main-headline { grid-column: span 2; position: relative; height: 600px; border-radius: 20px; overflow: hidden; border: 2px solid var(--gold); margin-bottom: 30px; box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
-        .main-headline img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; transition: 1s; }
-        .main-headline:hover img { transform: scale(1.05); opacity: 0.8; }
+        /* MANŞET (HERO SECTION) */
+        .hero-container { position: relative; width: 100%; height: 70vh; overflow: hidden; display: flex; align-items: flex-end; }
+        .hero-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; filter: brightness(0.6); transition: 1s; }
+        .hero-container:hover .hero-img { transform: scale(1.03); filter: brightness(0.8); }
         
-        .headline-overlay { position: absolute; bottom: 0; padding: 60px; background: linear-gradient(transparent, rgba(0,0,0,1) 75%); width: 100%; box-sizing: border-box; }
-        .badge-gold { background: var(--gold); color: black; padding: 6px 20px; border-radius: 4px; font-size: 11px; font-weight: bold; text-transform: uppercase; letter-spacing: 2px; }
-        .main-headline h2 { font-size: 48px; margin: 20px 0; font-family: 'Orbitron'; color: white; line-height: 1.1; }
-        .main-headline p { font-size: 20px; color: #eee; max-width: 950px; line-height: 1.6; }
+        .hero-content { position: relative; z-index: 2; padding: 60px; background: linear-gradient(transparent, rgba(0,0,0,1)); width: 100%; }
+        .category-tag { background: var(--gold); color: #000; padding: 6px 20px; font-weight: 800; font-size: 12px; border-radius: 2px; text-transform: uppercase; }
+        .hero-content h1 { font-size: 55px; margin: 20px 0; font-family: 'Orbitron'; line-height: 1.1; max-width: 900px; }
+        .hero-content p { font-size: 20px; color: #ccc; max-width: 800px; line-height: 1.6; margin-bottom: 25px; }
 
-        .news-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
-        .card { background: var(--card); border-radius: 12px; overflow: hidden; border: 1px solid #222; }
-        .card img { width: 100%; height: 220px; object-fit: cover; }
-        .card-inner { padding: 25px; }
-        .card-inner h3 { font-size: 20px; margin: 0 0 15px; color: var(--gold); font-family: 'Orbitron'; }
-        .card-inner p { font-size: 14px; color: #bbb; line-height: 1.6; }
+        /* ƏSAS HİSSƏ */
+        .main-layout { max-width: 1400px; margin: 50px auto; padding: 0 20px; display: grid; grid-template-columns: 3fr 1fr; gap: 40px; }
 
-        .sidebar { background: #0a0a0a; padding: 25px; border-radius: 12px; border: 1px solid #1a1a1a; height: fit-content; }
-        .sidebar h4 { font-family: 'Orbitron'; color: var(--red); border-bottom: 2px solid var(--red); padding-bottom: 10px; margin: 0 0 15px; text-transform: uppercase; letter-spacing: 2px; }
-        .side-news { font-size: 13px; padding: 15px 0; border-bottom: 1px solid #222; color: #999; }
+        /* XƏBƏR KARTLARI */
+        .section-title { font-family: 'Orbitron'; font-size: 20px; border-left: 5px solid var(--red); padding-left: 15px; margin-bottom: 30px; text-transform: uppercase; }
+        .news-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
+        .news-card { background: var(--card); border: 1px solid #1a1a1a; transition: 0.3s; cursor: pointer; }
+        .news-card:hover { transform: translateY(-10px); border-color: var(--red); }
+        .news-card img { width: 100%; height: 250px; object-fit: cover; }
+        .card-padding { padding: 25px; }
+        .card-padding h3 { font-size: 22px; margin: 0 0 15px; line-height: 1.3; font-family: 'Orbitron'; }
+        .card-padding p { color: var(--gray); font-size: 15px; line-height: 1.6; }
 
-        footer { text-align: center; padding: 60px; font-family: 'Orbitron'; font-size: 10px; color: #444; letter-spacing: 6px; border-top: 1px solid #111; }
+        /* SİDEBAR (CANLI XƏBƏR) */
+        .sidebar { background: #080808; padding: 30px; border: 1px solid #151515; height: fit-content; }
+        .sidebar h4 { font-family: 'Orbitron'; color: var(--red); margin-top: 0; }
+        .live-item { padding: 20px 0; border-bottom: 1px solid #222; }
+        .live-item .time { color: var(--red); font-weight: 800; font-size: 12px; display: block; margin-bottom: 5px; }
+        .live-item span { font-size: 14px; font-weight: 600; }
 
-        @media (max-width: 900px) { .container { grid-template-columns: 1fr; } .main-headline { grid-column: span 1; height: 450px; } .main-headline h2 { font-size: 28px; } }
+        /* FOOTER */
+        footer { background: #000; padding: 100px 20px; text-align: center; border-top: 1px solid #222; margin-top: 100px; }
+        .footer-logo { font-family: 'Orbitron'; font-size: 25px; margin-bottom: 20px; }
+        .copyright { color: #444; font-size: 12px; letter-spacing: 3px; }
+
+        @media (max-width: 1000px) {
+            .main-layout { grid-template-columns: 1fr; }
+            .hero-content h1 { font-size: 35px; }
+            .hero-content { padding: 30px; }
+        }
     </style>
 </head>
 <body>
 
-<div class="ticker">
-    <div class="ticker-content">
-        🎼 DÜNYADA BİR İLK: XEYRİYYƏÇİ ARİF BAĞIROV LALLAR ÜÇÜN XOR MƏKTƏBİ AÇDI — MUSİQİNİN SƏRHƏDSİZ GÜCÜ — NAZİR İBRAHİMOV: "BU BİR İNSANLIQ ZƏFƏRİDİR" — NB NEWS EXCLUSIVE —
-    </div>
-</div>
+<div class="top-bar">BAKU, AZERBAIJAN // GLOBAL MEDIA NETWORK // 2026</div>
 
 <header>
-    <h1 class="logo">NB <span>NEWS</span></h1>
+    <div class="logo">NB <span>NEWS</span></div>
 </header>
 
-<div class="container">
-    <div class="main-headline">
-        <img src="arif.jpg" alt="Xeyriyyəçi Arif Bağırov">
-        <div class="headline-overlay">
-            <span class="badge-gold">XEYRİYYƏÇİLİK</span>
-            <h2>Xeyriyyəçi Arif Bağırov Lallar Üçün Xor Məktəbi Açdı!</h2>
-            <p>Dünya musiqi tarixində bir ilk: Arif Bağırov nitq məhdudiyyətli şəxslər üçün vibrasiya texnologiyalarına əsaslanan "Xor Məktəbi"ni rəsmən istifadəyə verdi. Bu layihə səsini duyura bilməyənlərin səsi olacaq.</p>
-        </div>
-    </div>
-
-    <div class="news-feed">
-        <div class="news-grid">
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&q=80&w=600">
-                <div class="card-inner">
-                    <h3>Sərhədsiz Musiqi</h3>
-                    <p>Məktəb ən son elmi nailiyyətlərlə təchiz olunub və tələbələr musiqini ruhları ilə hiss edərək ifa edirlər.</p>
-                </div>
-            </div>
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&q=80&w=600">
-                <div class="card-inner">
-                    <h3>Qlobal Dəstək</h3>
-                    <p>Layihə beynəlxalq təşkilatlar tərəfindən ilin ən uğurlu xeyriyyə layihəsi kimi qiymətləndirilib.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="sidebar">
-        <h4>NB MEDIA TREND</h4>
-        <div class="side-news">Nazir İbrahimov layihənin bütün texniki təminatına dəstək verir.</div>
-        <div class="side-news">NB Store məktəb üçün xüsusi xeyriyyə fondu ayırdı.</div>
-        <div class="side-news">Baku Crystal Hall bu möhtəşəm xoru qəbul etməyə hazırlaşır.</div>
+<div class="breaking-news">
+    <div class="ticker">
+        🔥 TƏCİLİ: XEYRİYYƏÇİ ARİF BAĞIROV DÜNYADA BİR İLK OLAN LALLAR ÜÇÜN XOR MƏKTƏBİNİ RƏSMƏN AÇDI — NAZİR İBRAHİMOV: "BU LAYİHƏ BƏŞƏRİYYƏT ÜÇÜN BİR İNQİLABDIR" — NB NEWS CANLI YAYIMDADIR — 
     </div>
 </div>
 
-<footer>NB NEWS MEDIA GROUP // 2026 // BAKU</footer>
+<section class="hero-container">
+    <img src="arif.jpg" class="hero-img" alt="Arif Bağırov">
+    <div class="hero-content">
+        <span class="category-tag">Xüsusi Xəbər</span>
+        <h1>Xeyriyyəçi Arif Bağırovdan İnqilabi Addım: Lallar Üçün Xor Məktəbi!</h1>
+        <p>Böyük xeyriyyəçi Arif Bağırov tərəfindən açılan məktəb, musiqini vibrasiya və mühəndis metodikası ilə hiss edən lallar üçün yeni bir dövrün başlanğıcıdır.</p>
+    </div>
+</section>
+
+<div class="main-layout">
+    
+    <main>
+        <h2 class="section-title">Son Yeniliklər</h2>
+        <div class="news-grid">
+            <div class="news-card">
+                <img src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&q=80&w=600" alt="News">
+                <div class="card-padding">
+                    <h3>Vibrasiya Texnologiyası</h3>
+                    <p>Məktəbdə tətbiq olunan xüsusi mühəndis avadanlıqları tələbələrə musiqini ruhları ilə hiss etməyə imkan verir.</p>
+                </div>
+            </div>
+            <div class="news-card">
+                <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&q=80&w=600" alt="News">
+                <div class="card-padding">
+                    <h3>Nazir İbrahimov Dəstəyi</h3>
+                    <p>Həmkarı Nazir İbrahimov bu tarixi layihənin qlobal media və texniki təminatını tamamilə öz üzərinə götürdü.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <aside class="sidebar">
+        <h4>TƏCİLİ XƏBƏRLƏR</h4>
+        <div class="live-item">
+            <span class="time">10:45</span>
+            <span>NB Store məktəb üçün illik büdcə ayırdı.</span>
+        </div>
+        <div class="live-item">
+            <span class="time">09:30</span>
+            <span>Baku Crystal Hall-da ilk konsertin hazırlıqları başladı.</span>
+        </div>
+        <div class="live-item">
+            <span class="time">08:15</span>
+            <span>UNESCO Arif Bağırovun layihəsini rəsmi qeydiyyata aldı.</span>
+        </div>
+    </aside>
+
+</div>
+
+<footer>
+    <div class="footer-logo">NB <span>NEWS</span></div>
+    <div class="copyright">© 2026 GLOBAL NEWS NETWORK // BAKU BRANCH</div>
+</footer>
 
 </body>
 </html>
